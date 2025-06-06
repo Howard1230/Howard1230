@@ -1,0 +1,140 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.BorderLayout;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+
+public class BMI {
+
+	private JFrame frame;
+	private JTextField Text_feet;
+	private JTextField Text_inchs;
+	private JTextField textCm;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					BMI window = new BMI();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public BMI() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("英尺");
+		lblNewLabel.setBounds(86, 34, 46, 15);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("英吋");
+		lblNewLabel_1.setBounds(86, 87, 46, 15);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		Text_feet = new JTextField();
+		Text_feet.setBounds(142, 31, 96, 21);
+		frame.getContentPane().add(Text_feet);
+		Text_feet.setColumns(10);
+		
+		Text_inchs = new JTextField();
+		Text_inchs.setBounds(142, 84, 96, 21);
+		frame.getContentPane().add(Text_inchs);
+		Text_inchs.setColumns(10);
+		JLabel ansCM = new JLabel("");
+		ansCM.setBounds(142, 132, 96, 15);
+		frame.getContentPane().add(ansCM);
+		JButton btn_change = new JButton("轉換");
+		btn_change.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				double feet=(Double.parseDouble(Text_feet.getText()));
+				double inchs=(Double.parseDouble(Text_inchs.getText()));
+				double cm=((feet*12)+inchs)*2.54;
+				DecimalFormat df=new DecimalFormat("#.##");
+				String s=df.format(cm);
+				ansCM.setText(s);
+			}
+		});
+		btn_change.setBounds(284, 124, 87, 23);
+		frame.getContentPane().add(btn_change);
+		
+		JLabel lblNewLabel_2 = new JLabel("cm");
+		lblNewLabel_2.setBounds(86, 128, 46, 15);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("cm");
+		lblNewLabel_3.setBounds(86, 164, 46, 15);
+		frame.getContentPane().add(lblNewLabel_3);
+		
+		textCm = new JTextField();
+		textCm.setBounds(142, 161, 96, 21);
+		frame.getContentPane().add(textCm);
+		textCm.setColumns(10);
+		JLabel ans = new JLabel("");
+		ans.setBounds(143, 203, 95, 15);
+		frame.getContentPane().add(ans);
+		JLabel ansa = new JLabel("");
+		ansa.setBounds(142, 236, 96, 15);
+		frame.getContentPane().add(ansa);
+		JButton btnNewButton = new JButton("轉換");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double cm=Double.parseDouble(textCm.getText());
+				double totalinchs=cm/2.54;
+				int feet=(int)(totalinchs/12);
+				double inch=totalinchs%12;
+				DecimalFormat df=new DecimalFormat("#.##");
+				String s=df.format(feet);
+				String a=df.format(inch);
+				ans.setText(s);
+				ansa.setText(a);
+			}
+		});
+		btnNewButton.setBounds(284, 179, 87, 23);
+		frame.getContentPane().add(btnNewButton);
+		
+		JLabel lblNewLabel_4 = new JLabel("英尺");
+		lblNewLabel_4.setBounds(86, 203, 39, 15);
+		frame.getContentPane().add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel("英吋");
+		lblNewLabel_5.setBounds(86, 236, 46, 15);
+		frame.getContentPane().add(lblNewLabel_5);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+}
