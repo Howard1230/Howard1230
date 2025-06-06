@@ -1,0 +1,17 @@
+n <- 10
+p <- 0.5
+x <- 0:n
+pmf <- dbinom(x, size = n , prob = p)
+barplot(pmf,names.arg = x,col="#FF44AA",
+        main="二項分配(n=10, p=0.5)",
+        xlab="成功的次數",ylab="機率")
+
+n <- 10
+p <- 0.5
+x <- 5
+prob <- dbinom(x,size=n,prob=p)
+prob
+cdf <- pbinom(x,size=n,prob=p)
+cdf
+rang_prob <- sum(dbinom(3:7,size=n,prob=p))
+rang_prob
