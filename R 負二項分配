@@ -1,0 +1,11 @@
+p <- 0.4
+r <- 5
+x <- 0:15 #失敗次數的範圍
+pmf_nbinom <- dnbinom(x, size=r, prob=p)
+pmf_nbinom
+
+barplot(pmf_nbinom, names.arg = x ,col="orange",
+        main="負二項分配(r=5)",
+        xlab="失敗次數",ylab="機率")
+prob_nbinom <- dnbinom(7, size=r, prob=p)
+prob_nbinom
