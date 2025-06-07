@@ -1,0 +1,94 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.AbstractButton;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
+import javax.swing.JLabel;
+
+public class w15 {
+	int count=0;
+	private JFrame frame;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					w15 window = new w15();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public w15() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(325, 199, 66, 52);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setFont(new Font("Monospaced", Font.PLAIN, 20));
+		textArea.setBounds(10, 55, 196, 121);
+		frame.getContentPane().add(textArea);
+		JButton randombutton = new JButton("random");
+		randombutton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				count++; 
+				String temp=randombutton.getText();
+				int x=myrandom(1,10);
+				temp=Integer.toString(x);
+				randombutton.setText(temp);
+				String temp3=textArea.getText();
+				temp3=temp+"\n"+temp3;
+				textArea.setText(temp3);
+				DecimalFormat df=new DecimalFormat("#");
+				String a=df.format(count);
+				lblNewLabel_1.setText(a);	
+			}
+			public static int myrandom(int low,int up) {
+				return((int)(Math.random()*(up-low+1))+low);
+			}
+		});
+		randombutton.setFont(new Font("標楷體", Font.PLAIN, 30));
+		randombutton.setBounds(246, 55, 145, 121);
+		frame.getContentPane().add(randombutton);
+		
+		JLabel lblNewLabel = new JLabel("按的次數:");
+		lblNewLabel.setFont(new Font("標楷體", Font.PLAIN, 12));
+		lblNewLabel.setBounds(246, 199, 69, 52);
+		frame.getContentPane().add(lblNewLabel);
+		
+		
+		
+		JLabel lblNewLabel_2 = new JLabel("random 的數值:");
+		lblNewLabel_2.setFont(new Font("標楷體", Font.PLAIN, 20));
+		lblNewLabel_2.setBounds(10, 10, 207, 35);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		
+	}
+}
