@@ -1,0 +1,12 @@
+p <- 0.3
+n <- 15
+x <- 0:n
+
+pmf_geometric <- dgeom(x,prob=p)
+pmf_geometric
+
+barplot(pmf_geometric,names.arg = x,col="blue",
+        main="幾何分配(n=10, p=0.5)",
+        xlab="直到成功發生時所發生的次數",ylab="機率")
+prob_geometric <- dgeom(5,prob=p)
+prob_geometric
