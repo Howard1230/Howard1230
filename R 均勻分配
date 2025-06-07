@@ -1,0 +1,16 @@
+a <- 0 #下界
+b <- 2 #上界
+
+x <- seq(-0.5,2.5,by=0.01)
+
+pdf <- ifelse(x >=a& x<=b, 1/(b-a), 0)
+
+plot(x , pdf , type="l", col="blue" , lwd=2 , ylim=c(0,0.6),
+     main="均勻分配[0,2]" , xlab="x" , ylab="f(x)")
+abline(h=0,col="red")
+
+x_fill <- seq(0.2,0.8,by=0.01)
+polygon(c(0.2,x_fill,0.8),c(0,rep(1/(b-a),length(x_fill)),0),col="black",border=NA)
+
+prob <- (0.8-0.2)/(b-a)
+prob
