@@ -1,0 +1,10 @@
+lambda_poisson <- 3
+x_poisson <- 0:15
+
+pmf_poisson <- dpois(x_poisson, lambda=lambda_poisson)
+
+barplot(pmf_poisson, name.arg=x_poisson, col="red",
+        main="卜瓦松分配(lambda=3)",
+        xlab="事件的次數",ylab="機率")
+prob_poisson <- dpois(4,lambda=lambda_poisson)
+prob_poisson
